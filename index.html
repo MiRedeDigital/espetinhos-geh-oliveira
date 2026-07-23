@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espetinhos Geh Oliveira | O sabor que reúne amigos e família</title>
+<meta name="description" content="Espetinhos, porções e alimentação para consumo no local e pedidos em Itaquera, São Paulo. Peça já pelo WhatsApp!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --carvao: #1a1310;
+    --carvao-2: #241a15;
+    --vermelho: #c31f26;
+    --vermelho-escuro: #8f1519;
+    --amarelo: #f4b400;
+    --branco: #fff8ee;
+    --fumaca: #cbb9a8;
+    --whatsapp: #25d366;
+    --whatsapp-escuro: #1ea952;
+    --radius: 18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Poppins',sans-serif;
+    background:var(--branco);
+    color:var(--carvao);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Anton',sans-serif;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .container{
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  section{position:relative;padding:100px 0;}
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--vermelho-escuro);
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:26px;height:3px;
+    background:var(--amarelo);
+    display:inline-block;
+    border-radius:3px;
+  }
+  .section-title{font-size:clamp(28px,4vw,44px); line-height:1.05; margin-bottom:18px;}
+  .section-lead{
+    max-width:640px;
+    color:#5a4c42;
+    font-size:16.5px;
+    line-height:1.7;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 30px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:15px;
+    border:none;
+    cursor:pointer;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    white-space:nowrap;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-whats{
+    background:var(--whatsapp);
+    color:#fff;
+    box-shadow:0 10px 28px rgba(37,211,102,.35);
+  }
+  .btn-whats:hover{background:var(--whatsapp-escuro); transform:translateY(-3px); box-shadow:0 14px 32px rgba(37,211,102,.45);}
+  .btn-outline{
+    background:transparent;
+    color:var(--branco);
+    border:2px solid rgba(255,248,238,.5);
+  }
+  .btn-outline:hover{background:rgba(255,248,238,.12); border-color:var(--branco); transform:translateY(-3px);}
+  .btn-solid-dark{
+    background:var(--carvao);
+    color:var(--branco);
+  }
+  .btn-solid-dark:hover{background:#000; transform:translateY(-3px);}
+
+  /* ---------- SKEWER DIVIDER (signature element) ---------- */
+  .skewer-divider{
+    display:flex;
+    align-items:center;
+    gap:0;
+    width:100%;
+    overflow:hidden;
+    padding:22px 0;
+  }
+  .skewer-divider .stick{
+    flex:1;
+    height:4px;
+    background:linear-gradient(90deg,#8a5a2b,#c9905a);
+    border-radius:4px;
+    position:relative;
+  }
+  .skewer-divider .beads{
+    display:flex;
+    gap:14px;
+    padding:0 18px;
+  }
+  .skewer-divider .bead{
+    width:22px;height:22px;border-radius:6px;
+    transform:rotate(45deg);
+  }
+  .bead.b1{background:var(--vermelho);}
+  .bead.b2{background:var(--amarelo);}
+  .bead.b3{background:#7a3b1e;}
+  .bead.b4{background:var(--vermelho-escuro);}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(26,19,16,.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px; max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Anton',sans-serif;
+    color:var(--branco);
+    font-size:19px;
+    letter-spacing:.5px;
+  }
+  .logo span{color:var(--amarelo);}
+  .logo .flame{font-size:22px;}
+  .nav-links{display:flex; gap:30px;}
+  .nav-links a{
+    color:var(--fumaca); font-weight:600; font-size:14.5px;
+    transition:color .2s;
+    position:relative;
+  }
+  .nav-links a:hover{color:var(--amarelo);}
+  .nav-cta{display:flex; align-items:center; gap:16px;}
+  .nav-cta .btn{padding:11px 20px; font-size:13.5px;}
+  .burger{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none;}
+  .burger span{width:24px; height:2.5px; background:var(--branco); border-radius:2px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex; align-items:center;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(195,31,38,.35), transparent 45%),
+      radial-gradient(ellipse at 85% 75%, rgba(244,180,0,.18), transparent 50%),
+      linear-gradient(160deg, #150f0d 0%, #241a15 55%, #1a1310 100%);
+    position:relative;
+    overflow:hidden;
+    padding-top:90px;
+  }
+  .grill-lines{
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0px, rgba(255,255,255,.025) 1px, transparent 1px, transparent 34px);
+    pointer-events:none;
+  }
+  .ember{
+    position:absolute;
+    bottom:-10px;
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--amarelo);
+    box-shadow:0 0 10px 3px rgba(244,180,0,.7);
+    opacity:0;
+    animation:rise 6s ease-in infinite;
+  }
+  @keyframes rise{
+    0%{transform:translateY(0) translateX(0); opacity:0;}
+    10%{opacity:1;}
+    90%{opacity:.5;}
+    100%{transform:translateY(-92vh) translateX(20px); opacity:0;}
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    max-width:1180px; margin:0 auto; padding:40px 24px;
+    display:grid; grid-template-columns:1.15fr .85fr; gap:50px; align-items:center;
+  }
+  .hero-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(244,180,0,.12); border:1px solid rgba(244,180,0,.35);
+    color:var(--amarelo); padding:8px 16px; border-radius:999px;
+    font-size:13px; font-weight:700; letter-spacing:1px; margin-bottom:22px;
+  }
+  .hero h1{
+    color:var(--branco);
+    font-size:clamp(38px,5.4vw,64px);
+    line-height:1.02;
+    margin-bottom:22px;
+  }
+  .hero h1 .accent{color:var(--vermelho); -webkit-text-stroke:1px var(--amarelo);}
+  .hero p.lead{
+    color:var(--fumaca);
+    font-size:18px; line-height:1.7; max-width:520px; margin-bottom:36px;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+  .hero-visual{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .skewer-illustration{
+    width:100%; max-width:360px;
+    filter:drop-shadow(0 25px 40px rgba(0,0,0,.5));
+    animation:float 4.5s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(-3deg);}
+    50%{transform:translateY(-14px) rotate(3deg);}
+  }
+  .hero-stats{
+    display:flex; gap:28px; margin-top:44px; flex-wrap:wrap;
+  }
+  .hero-stats div{color:var(--branco);}
+  .hero-stats strong{
+    display:block; font-family:'Anton',sans-serif; font-size:28px; color:var(--amarelo);
+  }
+  .hero-stats span{font-size:12.5px; color:var(--fumaca); letter-spacing:.5px;}
+  .scroll-cue{
+    position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+    color:var(--fumaca); font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    z-index:2;
+  }
+  .scroll-cue .line{width:1px; height:30px; background:linear-gradient(var(--amarelo),transparent); animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+
+  /* ---------- SOBRE ---------- */
+  .sobre{background:var(--branco);}
+  .sobre-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:60px; align-items:center;}
+  .sobre-badge{
+    background:var(--carvao); border-radius:var(--radius);
+    padding:34px; color:var(--branco);
+    position:relative; overflow:hidden;
+  }
+  .sobre-badge::after{
+    content:'🔥'; position:absolute; right:-10px; bottom:-20px; font-size:130px; opacity:.08;
+  }
+  .sobre-badge h3{color:var(--amarelo); font-size:22px; margin-bottom:14px;}
+  .sobre-badge p{color:var(--fumaca); font-size:14.5px; line-height:1.7;}
+  .sobre-list{margin-top:20px; display:flex; flex-direction:column; gap:10px;}
+  .sobre-list li{display:flex; gap:10px; font-size:14px; color:var(--fumaca);}
+  .sobre-list li::before{content:'🍢'; }
+
+  /* ---------- PRODUTOS ---------- */
+  .produtos{background:#120d0b; color:var(--branco);}
+  .produtos .section-lead{color:var(--fumaca);}
+  .prod-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-top:50px;
+  }
+  .prod-card{
+    background:linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:var(--radius);
+    padding:28px 22px;
+    text-align:center;
+    transition:transform .3s ease, border-color .3s ease, background .3s ease;
+    cursor:default;
+  }
+  .prod-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--amarelo);
+    background:linear-gradient(160deg, rgba(244,180,0,.1), rgba(195,31,38,.06));
+  }
+  .prod-card .ic{font-size:38px; margin-bottom:14px; display:block;}
+  .prod-card h4{font-size:15.5px; margin-bottom:8px; letter-spacing:.3px;}
+  .prod-card .soon{
+    font-size:11px; color:var(--fumaca); border-top:1px dashed rgba(255,255,255,.15);
+    padding-top:10px; margin-top:12px;
+  }
+
+  /* ---------- DIFERENCIAIS ---------- */
+  .diferenciais{background:var(--branco);}
+  .dif-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:50px;}
+  .dif-item{
+    display:flex; gap:16px; align-items:flex-start;
+    background:#fffaf2; border:1px solid #f0e2cf; border-radius:16px; padding:24px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .dif-item:hover{transform:translateY(-4px); box-shadow:0 16px 30px rgba(195,31,38,.08);}
+  .dif-item .check{
+    min-width:38px; height:38px; border-radius:50%;
+    background:var(--vermelho); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-weight:800;
+  }
+  .dif-item h4{font-family:'Poppins',sans-serif; font-weight:700; font-size:15.5px; margin-bottom:5px;}
+  .dif-item p{font-size:13.5px; color:#7a6a5d;}
+
+  /* ---------- GALERIA ---------- */
+  .galeria{background:#120d0b; color:var(--branco);}
+  .galeria .section-lead{color:var(--fumaca);}
+  .gal-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; gap:14px; margin-top:50px;
+  }
+  .gal-grid .g1{grid-column:span 2; grid-row:span 2;}
+  .gal-slot{
+    border-radius:14px;
+    border:1.5px dashed rgba(255,255,255,.2);
+    background:repeating-linear-gradient(135deg, rgba(255,255,255,.02), rgba(255,255,255,.02) 10px, rgba(255,255,255,.04) 10px, rgba(255,255,255,.04) 20px);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:8px; color:var(--fumaca); font-size:12.5px;
+    transition:border-color .25s, color .25s;
+  }
+  .gal-slot:hover{border-color:var(--amarelo); color:var(--amarelo);}
+  .gal-slot .plus{font-size:26px;}
+
+  /* ---------- DEPOIMENTOS ---------- */
+  .depo{background:var(--branco);}
+  .depo-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:50px;}
+  .depo-card{
+    background:#fffaf2; border:1px solid #f0e2cf; border-radius:16px; padding:28px;
+    position:relative;
+  }
+  .depo-card .quote{font-size:34px; color:var(--amarelo); font-family:'Anton'; line-height:0;}
+  .depo-card p{color:#8a7a6c; font-size:14px; margin:16px 0; font-style:italic;}
+  .depo-stars{color:var(--amarelo); letter-spacing:2px; margin-bottom:4px;}
+  .depo-name{font-weight:700; font-size:13.5px; color:var(--carvao);}
+  .depo-role{font-size:11.5px; color:#a89787;}
+
+  /* ---------- INSTAGRAM ---------- */
+  .insta{
+    background:linear-gradient(135deg, var(--vermelho), var(--vermelho-escuro) 60%, var(--carvao));
+    color:#fff; text-align:center;
+  }
+  .insta .section-title{color:#fff;}
+  .insta .section-lead{color:rgba(255,255,255,.85); margin:0 auto 30px;}
+  .insta-handle{
+    font-family:'Anton'; font-size:22px; color:var(--amarelo); letter-spacing:1px; margin-bottom:8px;
+  }
+  .insta .btn{background:#fff; color:var(--vermelho-escuro); margin-top:10px;}
+  .insta .btn:hover{background:var(--amarelo); color:var(--carvao); transform:translateY(-3px);}
+
+  /* ---------- LOCALIZAÇÃO ---------- */
+  .local{background:#120d0b; color:var(--branco);}
+  .local .section-lead{color:var(--fumaca);}
+  .local-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:44px; align-items:stretch;}
+  .local-info{
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+    border-radius:var(--radius); padding:32px; display:flex; flex-direction:column; gap:18px;
+  }
+  .local-row{display:flex; gap:14px; align-items:flex-start;}
+  .local-row .ic{font-size:20px;}
+  .local-row h5{font-size:14px; margin-bottom:3px;}
+  .local-row p, .local-row a{font-size:13.5px; color:var(--fumaca);}
+  .map-frame{border-radius:var(--radius); overflow:hidden; border:1px solid rgba(255,255,255,.08); min-height:280px;}
+  .map-frame iframe{width:100%; height:100%; min-height:280px; border:0;}
+
+  /* ---------- CONTATO ---------- */
+  .contato{background:var(--branco); text-align:center;}
+  .contato-card{
+    max-width:760px; margin:40px auto 0;
+    background:var(--carvao); border-radius:24px; padding:56px 40px; color:#fff;
+    position:relative; overflow:hidden;
+  }
+  .contato-card::before{content:'🍢'; position:absolute; font-size:180px; opacity:.06; top:-40px; left:-30px;}
+  .contato-card::after{content:'🌶️'; position:absolute; font-size:150px; opacity:.06; bottom:-40px; right:-30px;}
+  .contato-card h3{font-size:clamp(24px,3vw,34px); margin-bottom:14px; position:relative;}
+  .contato-card p{color:var(--fumaca); margin-bottom:30px; position:relative;}
+  .contato-details{
+    display:flex; justify-content:center; gap:36px; margin-top:34px; flex-wrap:wrap; position:relative;
+  }
+  .contato-details div{font-size:13.5px; color:var(--fumaca);}
+  .contato-details strong{display:block; color:#fff; font-size:14.5px; margin-bottom:3px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#0d0908; color:var(--fumaca); padding:60px 0 26px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; margin-bottom:40px;}
+  .foot-logo{font-family:'Anton'; color:#fff; font-size:20px; margin-bottom:14px;}
+  .foot-logo span{color:var(--amarelo);}
+  footer p{font-size:13px; line-height:1.7; max-width:320px;}
+  footer h5{color:#fff; font-size:13.5px; margin-bottom:16px; text-transform:uppercase; letter-spacing:1px;}
+  .foot-links li{margin-bottom:10px; font-size:13.5px;}
+  .foot-links a:hover{color:var(--amarelo);}
+  .foot-social{display:flex; gap:12px; margin-top:8px;}
+  .foot-social a{
+    width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.06);
+    display:flex; align-items:center; justify-content:center; font-size:15px;
+    transition:background .25s, color .25s;
+  }
+  .foot-social a:hover{background:var(--amarelo); color:var(--carvao);}
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,.08); padding-top:24px;
+    text-align:center; font-size:12.5px; color:#6b5f56;
+  }
+
+  /* ---------- WHATSAPP FLUTUANTE ---------- */
+  .wa-float{
+    position:fixed; bottom:24px; right:24px; z-index:99;
+    width:60px; height:60px; border-radius:50%;
+    background:var(--whatsapp); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:28px;
+    box-shadow:0 12px 30px rgba(37,211,102,.5);
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  .wa-float:hover{background:var(--whatsapp-escuro);}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .ember,.skewer-illustration,.wa-float,.scroll-cue .line{animation:none !important;}
+    .reveal{transition:none; opacity:1; transform:none;}
+  }
+
+  /* ---------- RESPONSIVO ---------- */
+  @media (max-width:980px){
+    .hero-inner{grid-template-columns:1fr; text-align:center;}
+    .hero p.lead{margin:0 auto 36px;}
+    .hero-actions{justify-content:center;}
+    .hero-stats{justify-content:center;}
+    .hero-visual{order:-1; margin-bottom:10px;}
+    .sobre-grid{grid-template-columns:1fr;}
+    .prod-grid{grid-template-columns:repeat(2,1fr);}
+    .dif-grid{grid-template-columns:repeat(2,1fr);}
+    .depo-grid{grid-template-columns:1fr;}
+    .local-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr; gap:30px;}
+  }
+  @media (max-width:720px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    section{padding:70px 0;}
+    .prod-grid{grid-template-columns:repeat(2,1fr);}
+    .gal-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:130px;}
+    .gal-grid .g1{grid-column:span 2; grid-row:span 1;}
+    .dif-grid{grid-template-columns:1fr;}
+    .nav-cta .btn span.txt{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav class="nav">
+    <a href="#topo" class="logo"><span class="flame">🔥</span>Espetinhos <span>Geh Oliveira</span></a>
+    <div class="nav-links">
+      <a href="#sobre">Quem Somos</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#localizacao">Localização</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-whats" href="https://wa.me/5511939582496?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido%20na%20Espetinhos%20Geh%20Oliveira" target="_blank" rel="noopener">
+        <span>🟢</span><span class="txt">Pedir no WhatsApp</span>
+      </a>
+      <button class="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="topo">
+  <div class="grill-lines"></div>
+  <div id="embers"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🍢 Itaquera — São Paulo</div>
+      <h1>O sabor que <span class="accent">reúne</span><br>amigos e família!</h1>
+      <p class="lead">Na Espetinhos Geh Oliveira você encontra espetinhos preparados com ingredientes selecionados, porções deliciosas e um ambiente perfeito para aproveitar bons momentos.</p>
+      <div class="hero-actions">
+        <a class="btn btn-whats" href="https://wa.me/5511939582496?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido" target="_blank" rel="noopener">🟢 Fazer Pedido pelo WhatsApp</a>
+        <a class="btn btn-outline" href="#localizacao">📍 Como Chegar</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>+8</strong><span>Sabores de espetinho</span></div>
+        <div><strong>100%</strong><span>Preparo na hora</span></div>
+        <div><strong>⭐ Novo</strong><span>Peça já pelo WhatsApp</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="skewer-illustration" viewBox="0 0 300 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="150" y1="10" x2="150" y2="330" stroke="#d8b98f" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="150" cy="55" r="34" fill="#c31f26"/>
+        <circle cx="150" cy="55" r="34" fill="url(#g1)" opacity="0.5"/>
+        <rect x="122" y="100" width="56" height="46" rx="10" fill="#f4b400"/>
+        <circle cx="150" cy="185" r="34" fill="#7a3b1e"/>
+        <rect x="122" y="222" width="56" height="46" rx="10" fill="#e2c290"/>
+        <circle cx="150" cy="300" r="30" fill="#8f1519"/>
+        <defs>
+          <radialGradient id="g1" cx="0.3" cy="0.3" r="0.8">
+            <stop offset="0%" stop-color="#ff7a5c"/>
+            <stop offset="100%" stop-color="#c31f26"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>role</span><div class="line"></div></div>
+</section>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-badge reveal">
+        <h3>Feito com carinho, no fogo certo</h3>
+        <p>Cada espetinho passa pela brasa no ponto exato — o cuidado que faz a diferença entre "bom" e "inesquecível".</p>
+        <ul class="sobre-list">
+          <li>Ingredientes frescos selecionados</li>
+          <li>Preparo na hora do pedido</li>
+          <li>Ambiente familiar e acolhedor</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="eyebrow">Quem Somos</div>
+        <h2 class="section-title">Sabor de verdade, feito<br>pra reunir gente boa</h2>
+        <p class="section-lead">A Espetinhos Geh Oliveira nasceu com o propósito de oferecer alimentos saborosos, atendimento de qualidade e um ambiente agradável para receber clientes, amigos e famílias. Nosso compromisso é preparar cada pedido com carinho, utilizando ingredientes frescos e proporcionando uma excelente experiência gastronômica.</p>
+        <div class="skewer-divider" style="max-width:340px; margin-top:30px;">
+          <div class="beads"><div class="bead b1"></div><div class="bead b2"></div><div class="bead b3"></div></div>
+          <div class="stick"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section class="produtos" id="produtos">
+  <div class="container">
+    <div class="eyebrow">Cardápio</div>
+    <h2 class="section-title">Nossos Produtos</h2>
+    <p class="section-lead">Um espetinho para cada gosto — fotos e preços atualizados em breve.</p>
+    <div class="prod-grid">
+      <div class="prod-card reveal"><span class="ic">🥩</span><h4>Espetinhos Tradicionais</h4><div class="soon">Fotos e preços em breve</div></div>
+      <div class="prod-card reveal"><span class="ic">🍗</span><h4>Frango</h4><div class="soon">Fotos e preços em breve</div></div>
+      <div class="prod-card reveal"><span class="ic">🥓</span><h4>Linguiça</h4><div class="soon">Fotos e preços em breve</div></div>
+      <div class="prod-card reveal"><span class="ic">🧀</span><h4>Queijo Coalho</h4><div class="soon">Fotos e preços em breve</div></div>
+      <div class="prod-card reveal"><span class="ic">🥩</span><h4>Carne Bovina</h4><div class="soon">Fotos e preços em breve</div></div>
+      <div class="prod-card reveal"><span class="ic">🌭</span><h4>Outros Sabores</h4><div class="soon">Fotos e preços em breve</div></div>
+      <div class="prod-card reveal"><span class="ic">🍟</span><h4>Porções</h4><div class="soon">Fotos e preços em breve</div></div>
+      <div class="prod-card reveal"><span class="ic">🥤</span><h4>Bebidas</h4><div class="soon">Fotos e preços em breve</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="diferenciais">
+  <div class="container">
+    <div class="eyebrow">Por que escolher a gente</div>
+    <h2 class="section-title">Nossos Diferenciais</h2>
+    <div class="dif-grid">
+      <div class="dif-item reveal"><div class="check">✓</div><div><h4>Ingredientes selecionados</h4><p>Qualidade do início ao fim do preparo.</p></div></div>
+      <div class="dif-item reveal"><div class="check">✓</div><div><h4>Atendimento de qualidade</h4><p>Você é recebido como parte da família.</p></div></div>
+      <div class="dif-item reveal"><div class="check">✓</div><div><h4>Ambiente familiar</h4><p>Perfeito para reunir amigos e parentes.</p></div></div>
+      <div class="dif-item reveal"><div class="check">✓</div><div><h4>Produtos preparados na hora</h4><p>Direto da brasa para sua mesa.</p></div></div>
+      <div class="dif-item reveal"><div class="check">✓</div><div><h4>Excelente custo-benefício</h4><p>Sabor de qualidade com preço justo.</p></div></div>
+      <div class="dif-item reveal"><div class="check">✓</div><div><h4>Atendimento rápido</h4><p>Seu pedido pronto sem demora.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="galeria" id="galeria">
+  <div class="container">
+    <div class="eyebrow">Galeria</div>
+    <h2 class="section-title">Direto da Brasa</h2>
+    <p class="section-lead">Espaço reservado para fotos reais da churrasqueira, dos espetinhos, das porções, do ambiente e dos clientes.</p>
+    <div class="gal-grid">
+      <div class="gal-slot g1 reveal"><span class="plus">+</span>Foto da churrasqueira</div>
+      <div class="gal-slot reveal"><span class="plus">+</span>Foto do espetinho</div>
+      <div class="gal-slot reveal"><span class="plus">+</span>Foto da porção</div>
+      <div class="gal-slot reveal"><span class="plus">+</span>Foto do ambiente</div>
+      <div class="gal-slot reveal"><span class="plus">+</span>Foto dos clientes</div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="depo">
+  <div class="container">
+    <div class="eyebrow">Depoimentos</div>
+    <h2 class="section-title">O que dizem sobre a gente</h2>
+    <div class="depo-grid">
+      <div class="depo-card reveal">
+        <div class="quote">"</div>
+        <div class="depo-stars">★★★★★</div>
+        <p>Reserve este espaço para o depoimento de um cliente satisfeito.</p>
+        <div class="depo-name">Nome do Cliente</div>
+        <div class="depo-role">Cliente Espetinhos Geh Oliveira</div>
+      </div>
+      <div class="depo-card reveal">
+        <div class="quote">"</div>
+        <div class="depo-stars">★★★★★</div>
+        <p>Reserve este espaço para o depoimento de um cliente satisfeito.</p>
+        <div class="depo-name">Nome do Cliente</div>
+        <div class="depo-role">Cliente Espetinhos Geh Oliveira</div>
+      </div>
+      <div class="depo-card reveal">
+        <div class="quote">"</div>
+        <div class="depo-stars">★★★★★</div>
+        <p>Reserve este espaço para o depoimento de um cliente satisfeito.</p>
+        <div class="depo-name">Nome do Cliente</div>
+        <div class="depo-role">Cliente Espetinhos Geh Oliveira</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="insta">
+  <div class="container">
+    <div class="eyebrow" style="color:#ffe9b3;">Redes Sociais</div>
+    <h2 class="section-title">Siga no Instagram</h2>
+    <div class="insta-handle">@geholiveira.geh</div>
+    <p class="section-lead">Acompanhe nossas novidades, promoções e fotos dos nossos produtos em nosso Instagram.</p>
+    <a class="btn" href="https://instagram.com/geholiveira.geh" target="_blank" rel="noopener">📷 Ver Instagram</a>
+  </div>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section class="local" id="localizacao">
+  <div class="container">
+    <div class="eyebrow">Onde Estamos</div>
+    <h2 class="section-title">Localização</h2>
+    <div class="local-grid">
+      <div class="local-info reveal">
+        <div class="local-row"><span class="ic">📍</span><div><h5>Endereço</h5><p>Rua Domingo Rubino, 460 — Itaquera, São Paulo</p></div></div>
+        <div class="local-row"><span class="ic">📞</span><div><h5>Telefone</h5><p>(11) 93958-2496</p></div></div>
+        <div class="local-row"><span class="ic">💬</span><div><h5>WhatsApp</h5><p>(11) 93958-2496</p></div></div>
+        <div class="local-row"><span class="ic">✉️</span><div><h5>E-mail</h5><a href="mailto:espetinhosgeholiveira@gmail.com">espetinhosgeholiveira@gmail.com</a></div></div>
+        <a class="btn btn-whats" style="margin-top:6px;" href="https://wa.me/5511939582496" target="_blank" rel="noopener">🟢 Chamar no WhatsApp</a>
+      </div>
+      <div class="map-frame reveal">
+        <iframe src="https://www.google.com/maps?q=Rua+Domingo+Rubino,+460,+Itaquera,+S%C3%A3o+Paulo&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <div class="container">
+    <div class="eyebrow">Fale Conosco</div>
+    <h2 class="section-title">Pronto pra sentir o sabor?</h2>
+    <div class="contato-card">
+      <h3>Peça Agora pelo WhatsApp</h3>
+      <p>Atendimento rápido, direto e sem complicação.</p>
+      <a class="btn btn-whats" style="font-size:16.5px; padding:18px 38px;" href="https://wa.me/5511939582496?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido%20na%20Espetinhos%20Geh%20Oliveira" target="_blank" rel="noopener">🟢 Peça Agora pelo WhatsApp</a>
+      <div class="contato-details">
+        <div><strong>Telefone</strong>(11) 93958-2496</div>
+        <div><strong>E-mail</strong>espetinhosgeholiveira@gmail.com</div>
+        <div><strong>Endereço</strong>Rua Domingo Rubino, 460 — Itaquera</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">🔥 Espetinhos <span>Geh Oliveira</span></div>
+        <p>Espetinhos, porções e alimentação para consumo no local e pedidos. O sabor que reúne amigos e família.</p>
+        <div class="foot-social">
+          <a href="https://instagram.com/geholiveira.geh" target="_blank" rel="noopener">📷</a>
+          <a href="#" target="_blank" rel="noopener">📘</a>
+          <a href="https://wa.me/5511939582496" target="_blank" rel="noopener">💬</a>
+        </div>
+      </div>
+      <div>
+        <h5>Navegação</h5>
+        <ul class="foot-links">
+          <li><a href="#sobre">Quem Somos</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#localizacao">Localização</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contato</h5>
+        <ul class="foot-links">
+          <li>📍 Rua Domingo Rubino, 460 — Itaquera, SP</li>
+          <li>📞 (11) 93958-2496</li>
+          <li>✉️ espetinhosgeholiveira@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">© <span id="year"></span> Espetinhos Geh Oliveira. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5511939582496?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">💬</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // embers
+  const emberBox = document.getElementById('embers');
+  for(let i=0;i<18;i++){
+    const e = document.createElement('div');
+    e.className='ember';
+    e.style.left = (Math.random()*100)+'%';
+    e.style.animationDelay = (Math.random()*6)+'s';
+    e.style.animationDuration = (4+Math.random()*4)+'s';
+    e.style.opacity = 0;
+    emberBox.appendChild(e);
+  }
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // mobile burger -> simple toggle scroll to nav links stacked (basic fallback)
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
+  burger.addEventListener('click', ()=>{
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navLinks.style.position='absolute';
+    navLinks.style.top='64px';
+    navLinks.style.left='0';
+    navLinks.style.right='0';
+    navLinks.style.background='rgba(26,19,16,.98)';
+    navLinks.style.flexDirection='column';
+    navLinks.style.padding='20px 24px';
+    navLinks.style.gap='16px';
+  });
+</script>
+</body>
+</html>
